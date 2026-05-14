@@ -31,6 +31,7 @@ export function Sidebar({
 
   const countForCat = (id: string) => todos.filter((t) => t.category_id === id).length;
   const isAll = pathname === "/todos";
+  const isMypage = pathname === "/mypage";
 
   const handleAddCat = async () => {
     if (!catName.trim()) return;
@@ -77,6 +78,20 @@ export function Sidebar({
             </svg>
             전체보기
             <span className="ml-auto text-xs text-slate-300 font-medium">{todos.length}</span>
+          </button>
+
+          <button
+            onClick={() => { router.push("/mypage"); onClose(); }}
+            className={cn(
+              "w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-all duration-150 mb-0.5",
+              isMypage ? "bg-blue-50 text-blue-600 font-medium" : "text-slate-500 hover:bg-slate-50"
+            )}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M2 13.5C2 11 4.2 9 8 9s6 2 6 4.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+              <circle cx="8" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.2"/>
+            </svg>
+            마이페이지
           </button>
 
           <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider px-2 mt-4 mb-1.5">카테고리</p>

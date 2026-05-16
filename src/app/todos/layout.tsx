@@ -40,25 +40,26 @@ export default function TodosLayout({ children }: { children: React.ReactNode })
       />
 
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Mobile top bar */}
-        <div className="lg:hidden flex items-center gap-3 px-4 h-14 bg-white border-b border-slate-100 flex-shrink-0">
-          <button onClick={() => setSidebarOpen(true)} className="p-1.5 rounded-lg hover:bg-slate-100">
+        <header className="flex items-center gap-3 px-4 lg:px-6 h-14 bg-white border-b border-slate-100 flex-shrink-0">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="lg:hidden p-1.5 rounded-lg hover:bg-slate-100"
+            aria-label="메뉴"
+          >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M3 5h12M3 9h12M3 13h12" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </button>
-          <div className="flex items-center gap-1.5">
+          <div className="lg:hidden flex items-center gap-1.5">
             <div className="w-2 h-2 rounded-full bg-blue-500" />
             <span className="font-bold text-slate-800">DoIt</span>
           </div>
           <div className="ml-auto">
             <NotificationBell />
           </div>
-        </div>
+        </header>
 
-        <main className="flex-1 overflow-y-auto">
-          {children}
-        </main>
+        <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
     </div>
   );

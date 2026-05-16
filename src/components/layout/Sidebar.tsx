@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { NotificationBell } from "@/components/notifications/NotificationBell";
 import type { Category, User } from "@/types";
 
 const PALETTE = [
@@ -43,7 +42,6 @@ export function Sidebar({
 
   return (
     <>
-      {/* Mobile overlay */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/20 z-40 lg:hidden" onClick={onClose} />
       )}
@@ -54,15 +52,13 @@ export function Sidebar({
         isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
         {/* Logo */}
-        <div className="px-5 py-5 border-b border-slate-100 flex items-center justify-between">
+        <div className="px-5 py-5 border-b border-slate-100">
           <div className="flex items-center gap-2">
             <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
             <span className="font-bold text-lg text-slate-800 tracking-tight">DoIt</span>
           </div>
-          <NotificationBell />
         </div>
 
-        {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-3 py-3">
           <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider px-2 mb-1.5">메뉴</p>
           <button
@@ -145,14 +141,8 @@ export function Sidebar({
                 ))}
               </div>
               <div className="flex gap-2 mt-2.5">
-                <button
-                  className="flex-1 py-1 text-xs bg-blue-500 text-white rounded-lg font-medium"
-                  onClick={handleAddCat}
-                >추가</button>
-                <button
-                  className="flex-1 py-1 text-xs bg-slate-100 text-slate-500 rounded-lg"
-                  onClick={() => setShowAddCat(false)}
-                >취소</button>
+                <button className="flex-1 py-1 text-xs bg-blue-500 text-white rounded-lg font-medium" onClick={handleAddCat}>추가</button>
+                <button className="flex-1 py-1 text-xs bg-slate-100 text-slate-500 rounded-lg" onClick={() => setShowAddCat(false)}>취소</button>
               </div>
             </div>
           ) : (
@@ -165,17 +155,12 @@ export function Sidebar({
           )}
         </nav>
 
-        {/* User */}
         <div className="px-4 py-3 border-t border-slate-100 flex items-center gap-2.5">
           <div className="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">
             {user.nickname.charAt(0).toUpperCase()}
           </div>
           <span className="flex-1 text-sm font-medium text-slate-600 truncate">{user.nickname}</span>
-          <button
-            className="text-slate-300 hover:text-slate-500 transition-colors p-1"
-            onClick={onLogout}
-            title="로그아웃"
-          >
+          <button className="text-slate-300 hover:text-slate-500 transition-colors p-1" onClick={onLogout} title="로그아웃">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M6 2H4a2 2 0 00-2 2v8a2 2 0 002 2h2M10.5 11.5L14 8l-3.5-3.5M14 8H6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

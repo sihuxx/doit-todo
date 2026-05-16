@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { NotificationBell } from "@/components/notifications/NotificationBell";
 import type { Category, User } from "@/types";
 
 const PALETTE = [
@@ -53,11 +54,12 @@ export function Sidebar({
         isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
         {/* Logo */}
-        <div className="px-5 py-5 border-b border-slate-100">
+        <div className="px-5 py-5 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
             <span className="font-bold text-lg text-slate-800 tracking-tight">DoIt</span>
           </div>
+          <NotificationBell />
         </div>
 
         {/* Nav */}

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useStats } from "@/hooks/useStats";
 import { BarChart } from "@/components/stats/BarChart";
+import { NotificationSettings } from "@/components/notifications/NotificationSettings";
 
 export default function MyPage() {
   const { user } = useAuth();
@@ -90,6 +91,11 @@ export default function MyPage() {
         title={period === "weekly" ? "최근 7일 일별 완료율" : "최근 30일 일별 완료율"}
         subtitle="각 날짜에 생성된 할일 중 완료한 비율"
       />
+
+      {/* Notification Settings */}
+      <div className="mt-6">
+        <NotificationSettings />
+      </div>
     </div>
   );
 }

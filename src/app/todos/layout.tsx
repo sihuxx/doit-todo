@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { NotificationBell } from "@/components/notifications/NotificationBell";
 import { useAuth } from "@/hooks/useAuth";
 import { useCategories } from "@/hooks/useCategories";
 import { useTodos } from "@/hooks/useTodos";
@@ -49,6 +50,9 @@ export default function TodosLayout({ children }: { children: React.ReactNode })
           <div className="flex items-center gap-1.5">
             <div className="w-2 h-2 rounded-full bg-blue-500" />
             <span className="font-bold text-slate-800">DoIt</span>
+          </div>
+          <div className="ml-auto">
+            <NotificationBell />
           </div>
         </div>
 
